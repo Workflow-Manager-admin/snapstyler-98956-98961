@@ -4,6 +4,7 @@ import ImageUploader from '../ImageUploader';
 import StyleControls from '../StyleControls';
 import Preview from '../Preview';
 import Toolbar from './Toolbar';
+import Notification from '../Notification';
 import './MainContainer.css';
 
 /**
@@ -14,31 +15,34 @@ const MainContainer = () => {
   return (
     <StylerProvider>
       <div className="snapstyler-container">
-        <header className="snapstyler-header">
+        <header className="snapstyler-header" role="banner">
           <h1>SnapStyler</h1>
           <p className="subtitle">Beautify your screenshots for social media</p>
           <Toolbar />
         </header>
         
-        <div className="snapstyler-content">
-          <div className="snapstyler-upload-section">
+        <main className="snapstyler-content">
+          <section className="snapstyler-upload-section" aria-label="Image upload">
             <ImageUploader />
-          </div>
+          </section>
           
           <div className="snapstyler-editor">
-            <div className="snapstyler-controls">
+            <section className="snapstyler-controls" aria-label="Style controls">
               <StyleControls />
-            </div>
+            </section>
             
-            <div className="snapstyler-preview">
+            <section className="snapstyler-preview" aria-label="Preview">
               <Preview />
-            </div>
+            </section>
           </div>
-        </div>
+        </main>
         
-        <footer className="snapstyler-footer">
+        <footer className="snapstyler-footer" role="contentinfo">
           <p>Create beautiful stylized screenshots in seconds</p>
         </footer>
+        
+        {/* Notification component for toast messages */}
+        <Notification />
       </div>
     </StylerProvider>
   );
