@@ -3,6 +3,7 @@ import { StylerProvider } from '../../context/StylerContext';
 import ImageUploader from '../ImageUploader';
 import StyleControls from '../StyleControls';
 import Preview from '../Preview';
+import Toolbar from './Toolbar';
 import './MainContainer.css';
 
 /**
@@ -16,6 +17,7 @@ const MainContainer = () => {
         <header className="snapstyler-header">
           <h1>SnapStyler</h1>
           <p className="subtitle">Beautify your screenshots for social media</p>
+          <Toolbar />
         </header>
         
         <div className="snapstyler-content">
