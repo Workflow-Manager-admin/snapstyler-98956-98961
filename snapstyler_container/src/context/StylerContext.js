@@ -61,6 +61,16 @@ const stylerReducer = (state, action) => {
         ...state,
         isSharing: action.payload,
       };
+    case ACTIONS.SHOW_NOTIFICATION:
+      return {
+        ...state,
+        notification: action.payload,
+      };
+    case ACTIONS.CLEAR_NOTIFICATION:
+      return {
+        ...state,
+        notification: null,
+      };
     case ACTIONS.RESET:
       return initialState;
     default:
