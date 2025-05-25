@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStyler } from '../../context/StylerContext';
 import { ACTIONS } from '../../context/StylerContext';
+import { STYLE_PRESETS } from '../../utils/constants';
 import './StyleControls.css';
 
 /**
