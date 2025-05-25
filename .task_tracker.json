@@ -1,0 +1,5 @@
+{
+  "task_description": "{'component_name': 'Main Container for SnapStyler', 'description': 'Primary container for SnapStyler implementation: A web app that allows users to upload screenshots, beautify them for social media by generating stylish backgrounds, customizing corner radius, changing backgrounds, and adding their user handle before sharing.', 'framework': 'react', 'platform': 'web'}",
+  "tasks": {},
+  "next_task_id": 1
+}
