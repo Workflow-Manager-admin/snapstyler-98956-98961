@@ -27,6 +27,17 @@ export const isValidImageType = (file) => {
 };
 
 /**
+ * Validate that a file is under the specified size limit
+ * @param {File} file - The file to validate
+ * @param {number} maxSizeMB - Maximum size in MB
+ * @returns {boolean} - Whether the file is under the size limit
+ */
+export const isValidFileSize = (file, maxSizeMB = 10) => {
+  const maxSizeBytes = maxSizeMB * 1024 * 1024;
+  return file.size <= maxSizeBytes;
+};
+
+/**
  * Apply styling to an image element based on styling options
  * @param {HTMLElement} imageContainer - The container element to style
  * @param {Object} stylingOptions - The styling options to apply
