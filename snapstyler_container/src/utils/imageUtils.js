@@ -90,12 +90,20 @@ export const applyImageStyling = (imageContainer, stylingOptions) => {
  * @returns {Promise<string>} - A promise that resolves to the data URL of the generated image
  */
 export const generateShareableImage = async (previewElement) => {
-  // This is a placeholder - in a real app, we would use a library like html2canvas
-  // to convert the DOM element to an image
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      // Mock implementation - would be replaced with actual image generation
-      resolve('data:image/png;base64,mockedImageDataUrlHere');
-    }, 500);
-  });
+  // Dynamic import html2canvas for better code splitting
+  const html2canvas = (await import('html2canvas')).default;
+  
+  try {
+    const canvas = await html2canvas(previewElement, {
+      useCORS: true,
+      allowTaint: false,
+      backgroundColor: null, // Transparent background
+      scale: 2, // For better quality
+    });
+    
+    return canvas.toDataURL('image/png');
+  } catch (error) {
+    console.error('Error generating image:', error);
+    throw new Error('Failed to generate image');
+  }
 };
