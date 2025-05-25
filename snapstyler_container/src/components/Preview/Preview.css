@@ -38,6 +38,8 @@
   display: block;
   max-width: 100%;
   max-height: 60vh;
+  /* No default border-radius here, it will be applied dynamically */
+  overflow: hidden; /* Ensure child elements respect the border-radius */
 }
 
 .user-handle {

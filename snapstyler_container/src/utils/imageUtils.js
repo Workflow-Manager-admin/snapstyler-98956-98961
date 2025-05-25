@@ -43,11 +43,16 @@ export const applyImageStyling = (imageContainer, stylingOptions) => {
     backgroundPattern,
     padding
   } = stylingOptions;
-
-  // Apply border radius
-  imageContainer.style.borderRadius = `${cornerRadius}px`;
   
-  // Apply padding
+  // Find the image element inside the container
+  const imageElement = imageContainer.querySelector('.preview-image');
+  
+  // Apply border radius to the image element instead of container
+  if (imageElement) {
+    imageElement.style.borderRadius = `${cornerRadius}px`;
+  }
+  
+  // Apply padding to container
   imageContainer.style.padding = `${padding}px`;
 
   // Apply background based on type
