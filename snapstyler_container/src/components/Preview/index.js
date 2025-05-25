@@ -137,35 +137,36 @@ const Preview = () => {
 
   return (
     <div className="preview-container">
-      <h3>Preview</h3>
+      <h3 id="preview-heading">Preview</h3>
       
-      <div className="preview-wrapper">
+      <div className="preview-wrapper" aria-labelledby="preview-heading">
         <div className="preview" ref={previewRef}>
           <img 
             src={uploadedImage.dataUrl} 
-            alt="Preview" 
+            alt="Styled screenshot preview" 
             className="preview-image" 
           />
           
           {userHandle && (
-            <div className="user-handle">
+            <div className="user-handle" aria-label={`User handle: ${userHandle}`}>
               <span>{userHandle}</span>
             </div>
           )}
         </div>
       </div>
       
-      <div className="preview-actions">
+      <div className="preview-actions" role="group" aria-label="Preview actions">
         <button 
           className="btn" 
           onClick={handleSave}
           disabled={isSaving}
+          aria-busy={isSaving}
         >
           {isSaving ? (
             <span className="loading-indicator">
-              <span className="loading-dot"></span>
-              <span className="loading-dot"></span>
-              <span className="loading-dot"></span>
+              <span className="loading-dot" aria-hidden="true"></span>
+              <span className="loading-dot" aria-hidden="true"></span>
+              <span className="loading-dot" aria-hidden="true"></span>
               Saving
             </span>
           ) : 'Save'}
@@ -173,8 +174,17 @@ const Preview = () => {
         <button 
           className="btn btn-outline" 
           onClick={handleShare}
+          disabled={state.isSharing}
+          aria-busy={state.isSharing}
         >
-          Share
+          {state.isSharing ? (
+            <span className="loading-indicator">
+              <span className="loading-dot" aria-hidden="true"></span>
+              <span className="loading-dot" aria-hidden="true"></span>
+              <span className="loading-dot" aria-hidden="true"></span>
+              Sharing
+            </span>
+          ) : 'Share'}
         </button>
       </div>
     </div>
