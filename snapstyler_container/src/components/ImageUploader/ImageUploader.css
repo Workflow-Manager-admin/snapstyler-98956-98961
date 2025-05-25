@@ -1,0 +1,57 @@
+.image-uploader {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+  border-color: var(--kavia-orange);
+  background-color: rgba(232, 122, 65, 0.05);
+}
+
+.upload-area.dragging {
+  border-color: var(--kavia-orange);
+  background-color: rgba(232, 122, 65, 0.1);
+}
+
+.upload-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  color: rgb(255, 99, 71);
+  margin-top: 1rem;
+}
+
+.upload-success {
+  padding: 1rem;
+}
+
+.uploaded-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.uploaded-info p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 60%;
+}
