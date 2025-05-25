@@ -37,11 +37,27 @@ const Preview = () => {
       // Create a temporary anchor element to download the image
       const link = document.createElement('a');
       link.href = imageUrl;
-      link.download = `styled-${uploadedImage.name || 'screenshot'}`;
+      link.download = `styled-${uploadedImage.name || 'screenshot'}.png`;
       link.click();
+      
+      dispatch({
+        type: ACTIONS.SHOW_NOTIFICATION,
+        payload: {
+          type: 'success',
+          message: 'Image saved successfully!',
+          duration: 3000
+        }
+      });
     } catch (error) {
       console.error('Error generating shareable image:', error);
-      // Here we would want to show an error message to the user
+      dispatch({
+        type: ACTIONS.SHOW_NOTIFICATION,
+        payload: {
+          type: 'error',
+          message: 'Failed to save image. Please try again.',
+          duration: 5000
+        }
+      });
     } finally {
       dispatch({ type: ACTIONS.SET_SAVING, payload: false });
     }
