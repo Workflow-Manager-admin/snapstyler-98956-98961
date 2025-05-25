@@ -39,3 +39,6 @@ src/components/StyleControls/index.js
   Line 4:10:  'STYLE_PRESETS' is defined but never used  no-unused-vars
 
 webpack compiled with 1 warning
+Compiling...
+Compiled successfully!
+webpack compiled successfully

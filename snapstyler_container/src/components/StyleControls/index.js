@@ -30,6 +30,29 @@ const StyleControls = () => {
       <h3>Customize Your Screenshot</h3>
       
       <div className="control-group">
+        <label htmlFor="stylePreset">Style Preset</label>
+        <select
+          id="stylePreset"
+          onChange={(e) => {
+            if (e.target.value !== "") {
+              const preset = STYLE_PRESETS[e.target.value];
+              dispatch({
+                type: ACTIONS.UPDATE_STYLING,
+                payload: preset
+              });
+            }
+          }}
+          defaultValue=""
+        >
+          <option value="">Custom</option>
+          <option value="clean">Clean</option>
+          <option value="modern">Modern</option>
+          <option value="minimal">Minimal</option>
+          <option value="vibrant">Vibrant</option>
+        </select>
+      </div>
+      
+      <div className="control-group">
         <label htmlFor="cornerRadius">Corner Radius</label>
         <div className="range-control">
           <input
