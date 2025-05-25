@@ -15,6 +15,7 @@ const initialState = {
   userHandle: '',
   isSaving: false,
   isSharing: false,
+  notification: null, // { type: 'success|error|info', message: 'text', duration: 5000 }
 };
 
 // Action types
