@@ -30,6 +30,12 @@
   margin-bottom: 1rem;
 }
 
+.supported-formats {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
 .error-message {
   color: rgb(255, 99, 71);
   margin-top: 1rem;
