@@ -52,10 +52,45 @@
   font-size: 0.85rem;
 }
 
-/* Media query for larger screens */
+/* Media queries for responsive design */
 @media (min-width: 768px) {
   .snapstyler-editor {
     grid-template-columns: minmax(300px, 1fr) minmax(300px, 1.5fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .snapstyler-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .snapstyler-editor {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .snapstyler-header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .snapstyler-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .snapstyler-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .snapstyler-toolbar button {
+    width: 100%;
+  }
+  
+  .snapstyler-footer {
+    margin-top: 1.5rem;
   }
 }
 
