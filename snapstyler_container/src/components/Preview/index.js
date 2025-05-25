@@ -79,7 +79,14 @@ const Preview = () => {
           onClick={handleSave}
           disabled={isSaving}
         >
-          {isSaving ? 'Saving...' : 'Save'}
+          {isSaving ? (
+            <span className="loading-indicator">
+              <span className="loading-dot"></span>
+              <span className="loading-dot"></span>
+              <span className="loading-dot"></span>
+              Saving
+            </span>
+          ) : 'Save'}
         </button>
         <button 
           className="btn btn-outline" 
