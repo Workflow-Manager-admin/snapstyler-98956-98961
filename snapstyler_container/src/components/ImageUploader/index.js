@@ -26,6 +26,28 @@ const ImageUploader = () => {
     // Validate file type
     if (!isValidImageType(file)) {
       setError('Please upload a valid image file (JPEG, PNG, GIF, or WebP)');
+      dispatch({
+        type: ACTIONS.SHOW_NOTIFICATION, 
+        payload: {
+          type: 'error', 
+          message: 'Invalid file format. Please upload a JPEG, PNG, GIF, or WebP image.',
+          duration: 5000
+        }
+      });
+      return;
+    }
+
+    // Validate file size (max 10MB)
+    if (!isValidFileSize(file, 10)) {
+      setError('File is too large. Maximum size is 10MB.');
+      dispatch({
+        type: ACTIONS.SHOW_NOTIFICATION, 
+        payload: {
+          type: 'error', 
+          message: 'File is too large. Maximum size is 10MB.',
+          duration: 5000
+        }
+      });
       return;
     }
 
@@ -39,9 +61,27 @@ const ImageUploader = () => {
           name: file.name
         }
       });
+      
+      dispatch({
+        type: ACTIONS.SHOW_NOTIFICATION, 
+        payload: {
+          type: 'success', 
+          message: 'Image uploaded successfully!',
+          duration: 3000
+        }
+      });
     } catch (err) {
       setError('Failed to process the image. Please try again.');
       console.error('Image processing error:', err);
+      
+      dispatch({
+        type: ACTIONS.SHOW_NOTIFICATION, 
+        payload: {
+          type: 'error', 
+          message: 'Failed to process the image. Please try again.',
+          duration: 5000
+        }
+      });
     }
   };
 
