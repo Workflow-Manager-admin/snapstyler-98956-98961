@@ -127,16 +127,27 @@ const ImageUploader = () => {
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              triggerFileInput();
+            }
+          }}
+          tabIndex="0"
+          role="button"
+          aria-label="Upload a screenshot. Click to browse or drag and drop an image."
         >
-          <span className="upload-icon">📷</span>
+          <span className="upload-icon" aria-hidden="true">📷</span>
           <h3>Upload a Screenshot</h3>
           <p>Click to browse or drag and drop an image</p>
+          <p className="supported-formats">Supports JPEG, PNG, GIF and WebP (max 10MB)</p>
           <input 
             ref={fileInputRef}
             type="file"
             accept="image/*"
             onChange={handleFileChange}
             style={{ display: 'none' }}
+            aria-label="Upload image"
           />
           {error && <p className="error-message">{error}</p>}
         </div>

@@ -62,3 +62,11 @@ ERROR in ./src/components/ImageUploader/index.js 48:9-24
 export 'isValidFileSize' (imported as 'isValidFileSize') was not found in '../../utils/imageUtils' (possible exports: applyImageStyling, fileToDataUrl, generateShareableImage, isValidImageType)
 
 webpack compiled with 1 error
+Compiling...
+Failed to compile.
+
+Attempted import error: 'isValidFileSize' is not exported from '../../utils/imageUtils' (imported as 'isValidFileSize').
+ERROR in ./src/components/ImageUploader/index.js 48:9-24
+export 'isValidFileSize' (imported as 'isValidFileSize') was not found in '../../utils/imageUtils' (possible exports: applyImageStyling, fileToDataUrl, generateShareableImage, isValidImageType)
+
+webpack compiled with 1 error
