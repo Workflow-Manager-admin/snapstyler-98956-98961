@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useStyler } from '../../context/StylerContext';
 import { ACTIONS } from '../../context/StylerContext';
-import { fileToDataUrl, isValidImageType } from '../../utils/imageUtils';
+import { fileToDataUrl, isValidImageType, isValidFileSize } from '../../utils/imageUtils';
 import './ImageUploader.css';
 
 /**
