@@ -47,10 +47,68 @@ const Preview = () => {
     }
   };
 
-  const handleShare = () => {
-    // Share functionality would be implemented here
-    // For now, we'll just show a mock message
-    alert('Sharing functionality would open a dialog to share to social media platforms.');
+  const handleShare = async () => {
+    if (!uploadedImage) return;
+
+    dispatch({ type: ACTIONS.SET_SHARING, payload: true });
+
+    try {
+      const imageUrl = await generateShareableImage(previewRef.current);
+      
+      // Check if the Web Share API is supported
+      if (navigator.share) {
+        try {
+          // Convert data URL to a File object
+          const blob = await (await fetch(imageUrl)).blob();
+          const file = new File([blob], `styled-${uploadedImage.name || 'screenshot'}.png`, { 
+            type: 'image/png' 
+          });
+          
+          await navigator.share({
+            title: 'My Styled Screenshot',
+            text: userHandle ? `Created with SnapStyler by ${userHandle}` : 'Created with SnapStyler',
+            files: [file]
+          });
+          
+          dispatch({
+            type: ACTIONS.SHOW_NOTIFICATION,
+            payload: {
+              type: 'success',
+              message: 'Image shared successfully!',
+              duration: 3000
+            }
+          });
+        } catch (error) {
+          console.error('Error sharing:', error);
+          // Fall back to basic download if sharing failed
+          handleSave();
+        }
+      } else {
+        // Fall back to basic download on unsupported browsers
+        handleSave();
+        
+        dispatch({
+          type: ACTIONS.SHOW_NOTIFICATION,
+          payload: {
+            type: 'info',
+            message: 'Web Share API not supported in your browser. Image downloaded instead.',
+            duration: 5000
+          }
+        });
+      }
+    } catch (error) {
+      console.error('Error generating shareable image:', error);
+      dispatch({
+        type: ACTIONS.SHOW_NOTIFICATION,
+        payload: {
+          type: 'error',
+          message: 'Failed to generate shareable image. Please try again.',
+          duration: 5000
+        }
+      });
+    } finally {
+      dispatch({ type: ACTIONS.SET_SHARING, payload: false });
+    }
   };
 
   if (!uploadedImage) {
