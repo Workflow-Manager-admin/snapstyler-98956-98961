@@ -17,6 +17,14 @@ const Preview = () => {
       applyImageStyling(previewRef.current, stylingOptions);
     }
   }, [uploadedImage, stylingOptions]);
+  
+  // Handle initial load and ensure the corner radius is applied to the image directly
+  useEffect(() => {
+    const imageElement = previewRef.current?.querySelector('.preview-image');
+    if (imageElement && stylingOptions) {
+      imageElement.style.borderRadius = `${stylingOptions.cornerRadius}px`;
+    }
+  }, [uploadedImage, stylingOptions]);
 
   const handleSave = async () => {
     if (!uploadedImage) return;
